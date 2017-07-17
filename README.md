@@ -7,6 +7,7 @@ Make sure Java/JDK (1.7 or later) is installed and $JAVA_HOME environment variab
 ### Usage
 ```sh
 $ cd Tsmart-DATE
+$ source msetup
 $ java -javaagent:build/jar/rragent.jar -Xbootclasspath/p:classes.jar:jars/java-cup-11a.jar: rr.RRMain -classpath=benchmarks/ -tool=PCT:FT2 -noxml -quiet -stacks account.Account
 ```
 

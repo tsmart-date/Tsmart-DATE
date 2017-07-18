@@ -1,5 +1,5 @@
 <entry>
-  <date> Sun Jul 16 01:17:49 CST 2017 </date> 
+  <date> Tue Jul 18 15:11:10 CST 2017 </date> 
   <mode> FAST </mode> 
   <timeout> NO </timeout> 
   <options>
@@ -22,9 +22,9 @@
     <option><name> help </name>               <value> false </value> </option>
     <option><name> toolpath </name>           <value> /home/aliu/Research/Projects/date-release/Tsmart-DATE/simple.jar:/home/aliu/Research/Projects/date-release/Tsmart-DATE/tools.jar </value> </option>
     <option><name> classpath </name>          <value> benchmarks/ </value> </option>
-    <option><name> tool </name>               <value> PPT </value> </option>
+    <option><name> tool </name>               <value> PCT:FT2 </value> </option>
     <option><name> tools </name>              <value> false </value> </option>
-    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> true </value> </option>
     <option><name> constantGC </name>         <value> false </value> </option>
     <option><name> noFP </name>               <value> false </value> </option>
     <option><name> noShutdownHook </name>     <value> false </value> </option>
@@ -34,17 +34,17 @@
     <option><name> maxTime </name>            <value> 0 </value>  </option>
     <option><name> maxMem </name>             <value> 10240 </value> </option>
     <option><name> maxTid </name>             <value> 16 </value> </option>
-    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> stacks </name>             <value> true </value> </option>
     <option><name> values </name>             <value> false </value> </option>
     <option><name> noTidGC </name>            <value> false </value> </option>
     <option><name> noEventReuse </name>       <value> false </value> </option>
     <option><name> trackMemoryUsage </name>   <value> false </value> </option>
     <option><name> repository </name>         <value>  </value>   </option>
     <option><name> meta </name>               <value> null </value> </option>
-    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> methods </name>            <value> ["-.*Barrier.await\(\)V", "-java.util.concurrent.CyclicBarrier.await\(JLjava/util/concurrent/TimeUnit;\)I", "-java.util.concurrent.CyclicBarrier.await\(\)I", "-.*Barrier.DoBarrier\(I\)V", "-.*TournamentBarrier.DoBarrier\(I\)V", default=ACCEPT] </value> </option>
     <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
     <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
-    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-.*Barrier.*", "-.*BankAccount*.*", "-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
     <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
     <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
     <option><name> noConstructor </name>      <value> false </value> </option>
@@ -63,7 +63,7 @@
     <option><name> indices </name>            <value> 2147483647 </value> </option>
     <option><name> updaters </name>           <value> SAFE </value> </option>
     <option><name> array </name>              <value> FINE </value> </option>
-    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@135fbaa4 </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@2503dbd3 </value> </option>
     <option><name> nobarrier </name>          <value> false </value> </option>
     <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
     <option><name> callSites </name>          <value> false </value> </option>
@@ -83,16 +83,16 @@
     <name> user.dir </name>            <value> /home/aliu/Research/Projects/date-release/Tsmart-DATE </value> 
     <availableProcs> 2 </availableProcs> 
     <memCommitted> 121 </memCommitted> 
-    <memUsed> 27 </memUsed> 
+    <memUsed> 28 </memUsed> 
     <memTotal> 121 </memTotal> 
-    <compileTime> 755 </compileTime> 
-    <gc> <name> PS Scavenge </name> <time> 10 </time> </gc>
+    <compileTime> 1453 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 83 </time> </gc>
     <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
   </system>
-  <instrumented> account/Account account/BankAccount  </instrumented> 
-  <instrumentedNum> 2 </instrumentedNum> 
-  <skipped>  </skipped> 
-  <skippedNum> 0 </skippedNum> 
+  <instrumented> account/Account  </instrumented> 
+  <instrumentedNum> 1 </instrumentedNum> 
+  <skipped> account/BankAccount  </skipped> 
+  <skippedNum> 1 </skippedNum> 
   <sanityChecked>  </sanityChecked> 
   <sanityCheckedNum> 0 </sanityCheckedNum> 
   <counters>
@@ -103,34 +103,70 @@
 
     <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
 
+    <counter><name> "FT: Read Same Epoch" </name>                        <value>          0 </value> </counter>
+    <counter><name> "FT: ReadShared Same Epoch" </name>                  <value>          0 </value> </counter>
+    <counter><name> "FT: Read Exclusive" </name>                         <value>          0 </value> </counter>
+    <counter><name> "FT: Read Share" </name>                             <value>          0 </value> </counter>
+    <counter><name> "FT: Read Shared" </name>                            <value>          0 </value> </counter>
+    <counter><name> "FT: Write-Read Error" </name>                       <value>          0 </value> </counter>
+    <counter><name> "FT: Write Same Epoch" </name>                       <value>          0 </value> </counter>
+    <counter><name> "FT: Write Exclusive" </name>                        <value>          0 </value> </counter>
+    <counter><name> "FT: Write Shared" </name>                           <value>          0 </value> </counter>
+    <counter><name> "FT: Write-Write Error" </name>                      <value>          0 </value> </counter>
+    <counter><name> "FT: Read-Write Error" </name>                       <value>          0 </value> </counter>
+    <counter><name> "FT: Shared-Write Error" </name>                     <value>          0 </value> </counter>
+    <counter><name> "FT: Acquire" </name>                                <value>          0 </value> </counter>
+    <counter><name> "FT: Release" </name>                                <value>          0 </value> </counter>
+    <counter><name> "FT: Fork" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "FT: Join" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "FT: Barrier" </name>                                <value>          0 </value> </counter>
+    <counter><name> "FT: Wait" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "FT: Volatile" </name>                               <value>          0 </value> </counter>
+    <counter><name> "FT: Other" </name>                                  <value>          0 </value> </counter>
+    <counter><name> "FT: Total Reads" </name>                            <value> 0 </value> </counter>
+    <counter><name> "FT: Total Writes" </name>                           <value> 0 </value> </counter>
+    <counter><name> "FT: Total Access Ops" </name>                       <value> 0 </value> </counter>
+    <counter><name> "FT: Total Ops" </name>                              <value> 0 </value> </counter>
+
     <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
 
     <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 0 </value> </counter>
 
     <counter><name> "ShadowThread: Count" </name>                        <value> 3 </value> </counter>
     <counter><name> "ShadowThread: Max Live" </name>                     <value> 3 </value> </counter>
     <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 0 </value> </counter>
 
-    <counter><name> "Time: Instrumenter" </name>                         <value> <total>23.0000</total> <count>2</count> <ave>11.5000</ave> </value> </counter>
+    <counter><name> "ShadowVolatile: objects" </name>                    <value> 0 </value> </counter>
 
-    <counter><name> "rr.simple.PrePCTTool(1): pct_k" </name>             <value> 16 </value> </counter>
-    <counter><name> "rr.simple.PrePCTTool(1): pct_n" </name>             <value> 2 </value> </counter>
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>47.0000</total> <count>1</count> <ave>47.0000</ave> </value> </counter>
   </counters>
   <yikes>
   </yikes>
   <tool>
-    <name> rr.simple.PrePCTTool </name> 
+    <name> rr.simple.PCTTool </name> 
+  </tool>
+  <tool>
+    <name> tools.fasttrack.FastTrackTool </name> 
+    <thread> [tid=1    C=[(0:3) (1:3) (2:0) (3:0)]   E=(1:3)] </thread> 
+    <thread> [tid=2    C=[(0:4) (1:0) (2:3) (3:0)]   E=(2:3)] </thread> 
+    <thread> [tid=0    C=[(0:5) (1:0) (2:3) (3:0)]   E=(0:5)] </thread> 
   </tool>
   <tool>
     <name> Last </name> 
   </tool>
   <threadCount> 3 </threadCount> 
   <threadMaxActive> 3 </threadMaxActive> 
-  <errorTotal> 0 </errorTotal> 
-  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <errorTotal> 3 </errorTotal> 
+  <distinctErrorTotal> 1 </distinctErrorTotal> 
   <methods>
   </methods>
   <fields>
+    <field>
+      <name> account/Account.Bank_Total_I </name> 
+      <error> <name> FastTrack </name> <count> 3 </count> </error>
+    </field>
   </fields>
   <arrays>
   </arrays>
@@ -139,10 +175,11 @@
   <fieldAccesses>
   </fieldAccesses>
   <errorCountPerErrorType>
+    <errorType> <name> FastTrack </name> <count> 3 </count> </errorType>
   </errorCountPerErrorType>
   <warningsTotal> 0 </warningsTotal> 
   <yikesTotal> 0 </yikesTotal> 
   <failed> false </failed> 
   <failedReason>  </failedReason> 
-  <time> 839 </time> 
+  <time> 1203 </time> 
 </entry>

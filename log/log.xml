@@ -1,5 +1,5 @@
 <entry>
-  <date> Tue Jul 18 15:11:10 CST 2017 </date> 
+  <date> Thu Sep 07 17:34:09 CST 2017 </date> 
   <mode> FAST </mode> 
   <timeout> NO </timeout> 
   <options>
@@ -21,7 +21,7 @@
     <option><name> maxYikes </name>           <value> 5 </value>  </option>
     <option><name> help </name>               <value> false </value> </option>
     <option><name> toolpath </name>           <value> /home/aliu/Research/Projects/date-release/Tsmart-DATE/simple.jar:/home/aliu/Research/Projects/date-release/Tsmart-DATE/tools.jar </value> </option>
-    <option><name> classpath </name>          <value> benchmarks/ </value> </option>
+    <option><name> classpath </name>          <value> benchmarks/jdk1.7/ </value> </option>
     <option><name> tool </name>               <value> PCT:FT2 </value> </option>
     <option><name> tools </name>              <value> false </value> </option>
     <option><name> noxml </name>              <value> true </value> </option>
@@ -44,7 +44,7 @@
     <option><name> methods </name>            <value> ["-.*Barrier.await\(\)V", "-java.util.concurrent.CyclicBarrier.await\(JLjava/util/concurrent/TimeUnit;\)I", "-java.util.concurrent.CyclicBarrier.await\(\)I", "-.*Barrier.DoBarrier\(I\)V", "-.*TournamentBarrier.DoBarrier\(I\)V", default=ACCEPT] </value> </option>
     <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
     <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
-    <option><name> classes </name>            <value> ["-.*Barrier.*", "-.*BankAccount*.*", "-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-.*Barrier.*", "-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
     <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
     <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
     <option><name> noConstructor </name>      <value> false </value> </option>
@@ -78,21 +78,21 @@
     <name> java.class.path </name>     <value> .:build/jar/rragent.jar </value> 
     <name> os.name </name>             <value> Linux </value> 
     <name> os.arch </name>             <value> amd64 </value> 
-    <name> os.version </name>          <value> 4.4.0-83-generic </value> 
+    <name> os.version </name>          <value> 4.4.0-92-generic </value> 
     <name> user.name </name>           <value> aliu </value> 
     <name> user.dir </name>            <value> /home/aliu/Research/Projects/date-release/Tsmart-DATE </value> 
     <availableProcs> 2 </availableProcs> 
     <memCommitted> 121 </memCommitted> 
     <memUsed> 28 </memUsed> 
     <memTotal> 121 </memTotal> 
-    <compileTime> 1453 </compileTime> 
-    <gc> <name> PS Scavenge </name> <time> 83 </time> </gc>
+    <compileTime> 1467 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 117 </time> </gc>
     <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
   </system>
-  <instrumented> account/Account  </instrumented> 
-  <instrumentedNum> 1 </instrumentedNum> 
-  <skipped> account/BankAccount  </skipped> 
-  <skippedNum> 1 </skippedNum> 
+  <instrumented> account/Account account/BankAccount  </instrumented> 
+  <instrumentedNum> 2 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
   <sanityChecked>  </sanityChecked> 
   <sanityCheckedNum> 0 </sanityCheckedNum> 
   <counters>
@@ -140,7 +140,7 @@
 
     <counter><name> "ShadowVolatile: objects" </name>                    <value> 0 </value> </counter>
 
-    <counter><name> "Time: Instrumenter" </name>                         <value> <total>47.0000</total> <count>1</count> <ave>47.0000</ave> </value> </counter>
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>50.0000</total> <count>2</count> <ave>25.0000</ave> </value> </counter>
   </counters>
   <yikes>
   </yikes>
@@ -149,20 +149,24 @@
   </tool>
   <tool>
     <name> tools.fasttrack.FastTrackTool </name> 
-    <thread> [tid=1    C=[(0:3) (1:3) (2:0) (3:0)]   E=(1:3)] </thread> 
-    <thread> [tid=2    C=[(0:4) (1:0) (2:3) (3:0)]   E=(2:3)] </thread> 
-    <thread> [tid=0    C=[(0:5) (1:0) (2:3) (3:0)]   E=(0:5)] </thread> 
+    <thread> [tid=2    C=[(0:5) (1:0) (2:3) (3:0)]   E=(2:3)] </thread> 
+    <thread> [tid=0    C=[(0:6) (1:0) (2:3) (3:0)]   E=(0:6)] </thread> 
+    <thread> [tid=1    C=[(0:4) (1:3) (2:0) (3:0)]   E=(1:3)] </thread> 
   </tool>
   <tool>
     <name> Last </name> 
   </tool>
   <threadCount> 3 </threadCount> 
   <threadMaxActive> 3 </threadMaxActive> 
-  <errorTotal> 3 </errorTotal> 
-  <distinctErrorTotal> 1 </distinctErrorTotal> 
+  <errorTotal> 4 </errorTotal> 
+  <distinctErrorTotal> 2 </distinctErrorTotal> 
   <methods>
   </methods>
   <fields>
+    <field>
+      <name> account/BankAccount.Balance_I </name> 
+      <error> <name> FastTrack </name> <count> 1 </count> </error>
+    </field>
     <field>
       <name> account/Account.Bank_Total_I </name> 
       <error> <name> FastTrack </name> <count> 3 </count> </error>
@@ -175,11 +179,11 @@
   <fieldAccesses>
   </fieldAccesses>
   <errorCountPerErrorType>
-    <errorType> <name> FastTrack </name> <count> 3 </count> </errorType>
+    <errorType> <name> FastTrack </name> <count> 4 </count> </errorType>
   </errorCountPerErrorType>
   <warningsTotal> 0 </warningsTotal> 
   <yikesTotal> 0 </yikesTotal> 
   <failed> false </failed> 
   <failedReason>  </failedReason> 
-  <time> 1203 </time> 
+  <time> 1560 </time> 
 </entry>
